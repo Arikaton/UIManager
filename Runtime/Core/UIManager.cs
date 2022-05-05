@@ -32,6 +32,14 @@ namespace UIManagement.Core
                 _views.Add(view.ViewId, view);
             }
         }
+
+        public void Unregister(UIView view)
+        {
+            if (_views.ContainsKey(view.ViewId))
+            {
+                _views.Remove(view.ViewId);
+            }
+        }
         
         public void ShowViewNode(string nodeId, bool hidePopups = false)
         {

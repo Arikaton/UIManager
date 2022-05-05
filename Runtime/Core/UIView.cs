@@ -40,6 +40,16 @@ namespace UIManagement.Core
             _rectTransform = GetComponent<RectTransform>();
         }
 
+        private void OnEnable()
+        {
+            UIManager.Instance.Register(this);
+        }
+
+        private void OnDisable()
+        {
+            UIManager.Instance.Unregister(this);
+        }
+
         private void Start()
         {
             Initialize();
@@ -54,8 +64,6 @@ namespace UIManagement.Core
                 _showAnimation.AnimationFinished += OnShowAnimationFinished;
             if (_hideAnimation)
                 _hideAnimation.AnimationFinished += OnHideAnimationFinished;
-            
-            UIManager.Instance.Register(this);
         }
 
         private void CallAwakeAction()
