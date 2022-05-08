@@ -1,11 +1,8 @@
 {
-  "name": "uimanager",
+  "name": "com.arikaton.uimanager",
+  "displayName": "UI Manager",
   "version": "1.0.0-beta.1",
   "description": "Fast and convenient UI management and animating in Unity.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Arikaton/UIManager.git"
-  },
   "author": "Arikaton",
   "license": "UNLICENSED",
   "bugs": {
