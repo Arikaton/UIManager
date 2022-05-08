@@ -1,0 +1,18 @@
+{
+    "name": "UIManagement.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f2e4c1c383bd242739260ce20daf9ef4"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
