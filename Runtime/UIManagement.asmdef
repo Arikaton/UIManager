@@ -2,7 +2,7 @@
     "name": "UIManagement",
     "rootNamespace": "",
     "references": [
-        "GUID:93d03ccca87384b3084811dcbdf25761"
+        "DOTween.Modules"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
