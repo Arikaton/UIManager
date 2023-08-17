@@ -18,16 +18,13 @@ namespace UIManagement.Animations
         private RectTransform _canvasRect;
 
         private Vector2 _screenSize;
-        private Vector2 _viewSize;
 
         private void Awake()
         {
             _uiViewRect = _uiView.GetComponent<RectTransform>();
             var rootCanvas = _uiView.GetComponent<Canvas>().rootCanvas;
             _canvasRect = rootCanvas.GetComponent<RectTransform>();
-            float canvasScale = Screen.width / rootCanvas.GetComponent<CanvasScaler>().referenceResolution.x;
-            _screenSize = _canvasRect.sizeDelta / canvasScale;
-            _viewSize = _uiViewRect.sizeDelta;
+            _screenSize = _canvasRect.sizeDelta;
         }
 
         protected override Tween StartAnimationInternal(float durationPercent)
@@ -39,11 +36,9 @@ namespace UIManagement.Animations
                 return _uiViewRect.DOAnchorPos(_uiView.StartPosition, _duration * durationPercent)
                     .SetEase(_ease);
             }
-            else
-            {
-                return _uiViewRect.DOAnchorPos(outsidePosition, _duration * durationPercent)
-                    .SetEase(_ease);
-            }
+
+            return _uiViewRect.DOAnchorPos(outsidePosition, _duration * durationPercent)
+                .SetEase(_ease);
         }
 
         protected override void StartInstantAnimationInternal()
