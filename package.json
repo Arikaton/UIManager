@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/Arikaton/UIManager/issues"
   },
-  "homepage": "https://github.com/Arikaton/UIManager#readme"
+  "homepage": "https://github.com/Arikaton/UIManager#readme",
+  "samples": [
+    {
+      "displayName": "Basic Samples",
+      "description": "Contains basic package sample with simple interactions",
+      "path": "Samples~/BasicSamples"
+    }
+  ]
 }
