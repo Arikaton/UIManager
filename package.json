@@ -1,9 +1,10 @@
 {
   "name": "com.arikaton.uimanager",
   "displayName": "UI Manager",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-rc.1",
   "description": "Fast and convenient UI management and animating in Unity.",
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "licensesUrl": "https://github.com/Arikaton/UIManager/blob/main/LICENSE.md",
   "repository": {
     "type": "git",
     "url": "git+git@github.com:Arikaton/UIManager.git"
