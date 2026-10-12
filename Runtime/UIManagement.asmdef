@@ -2,7 +2,7 @@
     "name": "UIManagement",
     "rootNamespace": "",
     "references": [
-        "DOTween.Modules"
+        "UnityEngine.UI"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
