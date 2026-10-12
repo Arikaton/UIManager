@@ -31,6 +31,8 @@ namespace UIManagement.Core
         private RectTransform _rectTransform;
 
         public string ViewId => id.ViewId;
+        public string CollectionId => id.CollectionId;
+        public UIViewState State => _state;
         public virtual bool IsPopup => false;
 
         protected virtual void Awake()

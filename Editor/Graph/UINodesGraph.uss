@@ -1,0 +1,60 @@
+GridBackground {
+    --grid-background-color: #1e1e1e;
+    --line-color: rgba(193, 196, 192, 0.06);
+    --thick-line-color: rgba(193, 196, 192, 0.12);
+    --spacing: 20;
+}
+
+.ui-graph-node {
+    min-width: 170px;
+}
+
+.ui-graph-node #title {
+    height: 30px;
+}
+
+.ui-graph-node #title-label {
+    -unity-font-style: bold;
+    color: #f0f0f0;
+}
+
+.ui-screen-node #title {
+    background-color: #2d5a87;
+}
+
+.ui-view-node #title {
+    background-color: #2f6b45;
+}
+
+.ui-view-node.popup #title {
+    background-color: #6b4f8f;
+}
+
+.ui-view-node.unused #title {
+    background-color: #4a4a4a;
+}
+
+.ui-view-node.missing #title {
+    background-color: #8f3a2e;
+}
+
+.ui-graph-node__info {
+    padding: 3px 8px 5px 8px;
+    font-size: 10px;
+    color: #a8a8a8;
+    white-space: normal;
+}
+
+.ui-graph-node.active #node-border,
+.ui-graph-node.shown #node-border {
+    border-color: #f2c94c;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.ui-graph-node.active .ui-graph-node__info {
+    color: #f2c94c;
+    -unity-font-style: bold;
+}

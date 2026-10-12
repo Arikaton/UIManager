@@ -1,5 +1,6 @@
 using System.Linq;
 using UIManagement.Core;
+using UIManagement.Graph;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace UIManagement
     public class UINodeEditor : Editor
     {
         private static readonly Color RedColor = new Color(1f, 0.36f, 0.23f);
-        
+
         private UINode tgt;
 
         private void OnEnable()
@@ -20,15 +21,30 @@ namespace UIManagement
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            EditorGUI.BeginChangeCheck();
-            
+
             EditorGUILayout.BeginVertical(new GUIStyle("helpBox"));
-            EditorGUILayout.LabelField("Node", EditorStyles.whiteLargeLabel);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Node", tgt.Id, EditorStyles.boldLabel);
+            GUI.enabled = tgt.Collection != null;
+            if (GUILayout.Button("Rename", GUILayout.Width(60)))
+                NodesCollectionActions.PromptRenameNode(tgt.Collection, tgt, GUIUtility.GUIToScreenRect(GUILayoutUtility.GetLastRect()));
+            if (GUILayout.Button("Open Graph", GUILayout.Width(80)))
+                NodesGraphWindow.Open(tgt.Collection);
+            GUI.enabled = true;
+            EditorGUILayout.EndHorizontal();
+
             GUI.enabled = false;
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(UINode.Id)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(UINode.Collection)));
             GUI.enabled = true;
 
+            if (tgt.Collection == null)
+            {
+                EditorGUILayout.HelpBox("This node isn't attached to a collection.", MessageType.Warning);
+                EditorGUILayout.EndVertical();
+                return;
+            }
+
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.BeginHorizontal();
             GUILayout.Space(10);
             var uiViewsProperty = serializedObject.FindProperty(nameof(UINode.ViewIds));
@@ -47,7 +63,7 @@ namespace UIManagement
                 serializedObject.ApplyModifiedProperties();
             }
         }
-        
+
         private void DrawUIViewsList(SerializedProperty listProperty)
         {
             EditorGUI.indentLevel += 1;
@@ -68,12 +84,13 @@ namespace UIManagement
                     viewIdIndex = EditorGUILayout.Popup("View ID", viewIdIndex, availableViewIds.ToArray());
                     element.stringValue = availableViewIds[viewIdIndex];
                     GUI.color = Color.white;
-                    if (GUILayout.Button("-", EditorStyles.miniButtonRight, GUILayout.Width(20)))
+                    var remove = GUILayout.Button("-", EditorStyles.miniButtonRight, GUILayout.Width(20));
+                    EditorGUILayout.EndHorizontal();
+                    if (remove)
                     {
                         listProperty.DeleteArrayElementAtIndex(i);
+                        break;
                     }
-                    EditorGUILayout.EndHorizontal();
-                    
                 }
             }
             EditorGUI.indentLevel -= 1;
