@@ -41,6 +41,13 @@ namespace UIManagement.Core
             }
         }
         
+        // Views shown by their awake action are not part of any node yet, track them so the next node change hides them
+        internal void MarkActive(UIView view)
+        {
+            if (!view.IsPopup)
+                _activeViews.Add(view.ViewId);
+        }
+
         public void ShowViewNode(string nodeId, bool hidePopups = false)
         {
             if (nodesCollection.UINodes.All(x => x.Id != nodeId))

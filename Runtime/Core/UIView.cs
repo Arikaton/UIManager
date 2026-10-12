@@ -73,9 +73,11 @@ namespace UIManagement.Core
                 case UIViewAwakeAction.Show:
                     InstantHide();
                     Show();
+                    UIManager.Instance.MarkActive(this);
                     break;
                 case UIViewAwakeAction.InstantShow:
                     InstantShow();
+                    UIManager.Instance.MarkActive(this);
                     break;
                 case UIViewAwakeAction.InstantHide:
                     InstantHide();

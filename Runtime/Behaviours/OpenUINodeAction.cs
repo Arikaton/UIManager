@@ -9,7 +9,7 @@ namespace UIManagement.Behaviours
 
         public void Invoke()
         {
-            // UIManager.Instance.ShowViewNode(_nodeId);
+            UIManager.Instance.ShowViewNode(nodeId.NodeId);
         }
     }
 }
